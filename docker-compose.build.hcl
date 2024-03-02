@@ -12,7 +12,7 @@ group "default" {
 
 target "chatbot" {
   args = {
-    TAG = null
+    TAG = "test"
   }
   dockerfile = "infrastructure-packaging/Dockerfile.ChatBot"
   tags = ["${DISTRO}/virtualwife-chatbot:${TAG}"]
@@ -20,7 +20,7 @@ target "chatbot" {
 
 target "chatvrm" {
   args = {
-    TAG = null
+    TAG = "test"
   }
   dockerfile = "infrastructure-packaging/Dockerfile.ChatVRM"
   tags = ["${DISTRO}/virtualwife-chatvrm:${TAG}"]
@@ -28,7 +28,7 @@ target "chatvrm" {
 
 target "gateway" {
   args = {
-    TAG = null
+    TAG = "test"
   }
   dockerfile = "infrastructure-packaging/Dockerfile.Gateway"
   tags = ["${DISTRO}/virtualwife-gateway:${TAG}"]
