@@ -3,7 +3,7 @@ variable "TAG" {
 }
 
 variable "DISTRO" {
-  default = "okapi0129"
+  default = "moe-test-jason"
 }
 
 group "default" {
