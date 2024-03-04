@@ -112,17 +112,18 @@ enable_bili_live = False
 
 
 def bili_live_client_main():
-    global enable_bili_live
-    if enable_bili_live == False:
-        background_thread = threading.Thread(target=start_bili_live_client)
-        # 将后台线程设置为守护线程，以便在主线程结束时自动退出
-        background_thread.daemon = True
-        # 启动后台线程
-        background_thread.start()
-        enable_bili_live = True
-        logger.info("=> Start BiliLiveClient Success")
+    pass
+    # global enable_bili_live
+    # if enable_bili_live == False:
+    #     background_thread = threading.Thread(target=start_bili_live_client)
+    #     # 将后台线程设置为守护线程，以便在主线程结束时自动退出
+    #     background_thread.daemon = True
+    #     # 启动后台线程
+    #     background_thread.start()
+    #     enable_bili_live = True
+    #     logger.info("=> Start BiliLiveClient Success")
 
 
-def start_bili_live_client():
-    client = BiliLiveClient()
-    asyncio.run(client.start())
+# def start_bili_live_client():
+#     client = BiliLiveClient()
+#     asyncio.run(client.start())

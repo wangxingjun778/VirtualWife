@@ -10,6 +10,9 @@ export const initialFormData = {
 	"httpsProxy": "https://host.docker.internal:23457",
 	"socks5Proxy": "socks5://host.docker.internal:23457",
 	"languageModelConfig": {
+		"zhipuai": {
+			"ZHIPUAI_API_KEY": "xx-xx",
+		},
 		"openai": {
 			"OPENAI_API_KEY": "sk-",
 			"OPENAI_BASE_URL": ""

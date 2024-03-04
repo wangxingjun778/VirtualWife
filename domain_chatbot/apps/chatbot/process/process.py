@@ -1,6 +1,13 @@
 
 import logging
 import traceback
+# from domain_chatbot.apps.chatbot.character.character_generation import singleton_character_generation
+# from domain_chatbot.apps.chatbot.config import singleton_sys_config
+# from domain_chatbot.apps.chatbot.output.realtime_message_queue import realtime_callback
+# from domain_chatbot.apps.chatbot.chat.chat_history_queue import conversation_end_callback
+# from domain_chatbot.apps.chatbot.emotion.emotion_manage import GenerationEmotionRespondChatPropmt
+# from domain_chatbot.apps.chatbot.utils.datatime_utils import get_current_time_str
+
 from ..character.character_generation import singleton_character_generation
 from ..config import singleton_sys_config
 from ..output.realtime_message_queue import realtime_callback
@@ -43,9 +50,10 @@ class ProcessCore():
             prompt = prompt.format(
                 you_name=you_name, long_history=long_history, current_time=current_time)
 
-            # 调用大语言模型流式生成对话
+            # 调用大语言模型流式生成对话   # TODO: TO BE CHANGED
             singleton_sys_config.llm_model_driver.chatStream(prompt=prompt,
-                                                             type=singleton_sys_config.conversation_llm_model_driver_type,
+                                                             # type=singleton_sys_config.conversation_llm_model_driver_type,
+                                                             type='zhipuai',
                                                              role_name=role_name,
                                                              you_name=you_name,
                                                              query=query,

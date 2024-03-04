@@ -50,9 +50,11 @@ class SysConfig():
         sys_config_json = "{}"
         with open(config_path, 'r') as f:
             sys_config_json = json.load(f)
+            logger.debug(f"\n>>>sys_config_json 1111: {json.dumps(sys_config_json, ensure_ascii=False)}\n")
         try:
             sys_config_obj = SysConfigModel.objects.filter(
                 code=sys_code).first()
+            logger.debug(f'>>>sys_config_obj: {sys_config_obj}')
             if sys_config_obj == None:
                 logger.debug("=> save sys config to db")
                 sys_config_model = SysConfigModel(
@@ -60,8 +62,10 @@ class SysConfig():
                     config=json.dumps(sys_config_json)
                 )
                 sys_config_model.save()
+                logger.debug(f"\n>>>sys_config_json 2222: {json.dumps(sys_config_json, ensure_ascii=False)}\n")
             else:
                 sys_config_json = json.loads(sys_config_obj.config)
+                logger.debug(f"\n>>>sys_config_json 3333: {json.dumps(sys_config_json, ensure_ascii=False)}\n")
         except Exception as e:
             logger.debug("=> load sys config error: %s" % str(e))
         return sys_config_json
@@ -105,6 +109,7 @@ class SysConfig():
         self.yourName = yourName
 
         # 加载大语言模型配置
+        os.environ['ZHIPUAI_API_KEY'] = sys_config_json["languageModelConfig"]["zhipuai"]["ZHIPUAI_API_KEY"]
         os.environ['OPENAI_API_KEY'] = sys_config_json["languageModelConfig"]["openai"]["OPENAI_API_KEY"]
         os.environ['OPENAI_BASE_URL'] = sys_config_json["languageModelConfig"]["openai"]["OPENAI_BASE_URL"]
         os.environ['TEXT_GENERATION_API_URL'] = sys_config_json["languageModelConfig"]["textGeneration"]["TEXT_GENERATION_API_URL"]

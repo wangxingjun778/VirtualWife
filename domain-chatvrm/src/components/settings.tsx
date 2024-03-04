@@ -20,7 +20,7 @@ import { join } from 'path';
 import { voiceData, getVoices } from '@/features/tts/ttsApi';
 
 const tabNames = ['基础设置', '自定义角色设置', '大语言模型设置', '记忆模块设置', '高级设置'];
-const llm_enums = ["openai", "text_generation"]
+const llm_enums = ["zhipuai", "openai", "text_generation"]
 
 const publicDir = join(process.cwd(), 'public');
 
@@ -404,6 +404,18 @@ export const Settings = ({
     // 大语言模型设置
     return (
       <div className="globals-settings">
+        <div className="section">
+          <div className="title">ZhipuAI配置</div>
+          <div className="field">
+            <label>ZHIPUAI_API_KEY</label>
+            <input type="text" defaultValue={formData.languageModelConfig.zhipuai.ZHIPUAI_API_KEY}
+              onChange={e => {
+                formData.languageModelConfig.zhipuai.ZHIPUAI_API_KEY = e.target.value
+                setFormData(formData);
+              }}
+            />
+          </div>
+        </div>
         <div className="section">
           <div className="title">OpenAI配置</div>
           <div className="field">
